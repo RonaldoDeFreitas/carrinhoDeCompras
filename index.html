@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>Carrinho de compras</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+  <header class="container">
+	<h1>Loja de CD's</h1>
+  </header>
+
+  <section class="container">
+
+	  <h2 class="title">Carrinho de compras</h2>
+	  
+	  <table>
+			<tbody>
+			    <tr>
+			    	<th>Itens para comprar</th>
+			    	<th>Preço</th>
+			    	<th>Quantidade</th>
+			    </tr>
+			    <tr class="album">
+			    	<td class="info-album">
+			    		<img src="img/album01.jpg" />
+				    	<h3>Norte - Nx Zero</h3>
+				    	<span>Em estoque</span><br />
+				    	<input type="checkbox" name="EmbalarParaPresente" />Embalar para presente <br />
+				    	<a href="">Tirar do Carrinho</a>
+			    	</td>
+			    	<td class="info-preco">R$ 10,50</td>
+			    	<td class="info-quantidade"><input type="number" name="quantidade" value="1"></td>
+			    </tr>
+			</tbody>
+			<tr>
+				<td class="total-compra">Total da compra</td>
+				<td id="total">R$ 29,90</td>
+			    <td></td>
+			</tr>
+	  </table>
+  </section>
+</body>
+
+<script type="text/javascript">
+	var total = document.getElementById('total');
+    
+    function moneyTextToFloat(text) {
+    	var cleanText = text.replace("R$", "").replace(",", ".");
+    	return parseFloat(cleanText);	
+    }
+</script>
+
+</html>

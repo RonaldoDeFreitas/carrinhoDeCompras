@@ -1,0 +1,1 @@
+getElementById('#valor-total')
