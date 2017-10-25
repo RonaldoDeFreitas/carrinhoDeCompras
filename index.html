@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
 	<title>Carrinho de compras</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="js/rogus.js"></script>
 </head>
 
 <body>
@@ -23,7 +24,7 @@
 			    	<th>Preço</th>
 			    	<th>Quantidade</th>
 			    </tr>
-			    <tr class="album">
+			    <tr class="produto">
 			    	<td class="info-album">
 			    		<img src="img/album01.jpg" />
 				    	<h3>Norte - Nx Zero</h3>
@@ -31,8 +32,44 @@
 				    	<input type="checkbox" name="EmbalarParaPresente" />Embalar para presente <br />
 				    	<a href="">Tirar do Carrinho</a>
 			    	</td>
-			    	<td class="info-preco">R$ 10,50</td>
+			    	<td class="price">R$ 30,50</td>
 			    	<td class="info-quantidade"><input type="number" name="quantidade" value="1"></td>
+			    </tr>
+
+			    <tr class="produto">
+			    	<td class="info-album">
+			    		<img src="img/album02.jpg" />
+				    	<h3>Sete Chave - Nx Zero</h3>
+				    	<span>Em estoque</span><br />
+				    	<input type="checkbox" name="EmbalarParaPresente" />Embalar para presente <br />
+				    	<a href="">Tirar do Carrinho</a>
+			    	</td>
+			    	<td class="price">R$ 45,50</td>
+			    	<td class="info-quantidade"><input type="number" name="quantidade" value="1"></td>
+			    </tr>
+
+			    <tr class="produto">
+			    	<td class="info-album">
+			    		<img src="img/album03.jpg" />
+				    	<h3>Em Comum - Nx Zero</h3>
+				    	<span>Em estoque</span><br />
+				    	<input type="checkbox" name="EmbalarParaPresente" />Embalar para presente <br />
+				    	<a href="">Tirar do Carrinho</a>
+			    	</td>
+			    	<td class="price">R$ 29,50</td>
+			    	<td class="info-quantidade"><input type="number" name="quantidade" value="1"></td>
+			    </tr>
+
+			    <tr class="produto">
+			    	<td class="info-album">
+			    		<img src="img/album04.jpg" />
+				    	<h3>Agora - Nx Zero</h3>
+				    	<span>Em estoque</span><br />
+				    	<input type="checkbox" name="EmbalarParaPresente" />Embalar para presente <br />
+				    	<a href="">Tirar do Carrinho</a>
+			    	</td>
+			    	<td class="price">R$ 29,50</td>
+			    	<td class="info-quantidade"><input type="number" class="quantity" value="1"></td>
 			    </tr>
 			</tbody>
 			<tr>
@@ -41,16 +78,6 @@
 			    <td></td>
 			</tr>
 	  </table>
-  </section>
+</section>
 </body>
-
-<script type="text/javascript">
-	var total = document.getElementById('total');
-    
-    function moneyTextToFloat(text) {
-    	var cleanText = text.replace("R$", "").replace(",", ".");
-    	return parseFloat(cleanText);	
-    }
-</script>
-
 </html>

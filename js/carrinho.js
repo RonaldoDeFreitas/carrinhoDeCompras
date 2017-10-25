@@ -1,1 +1,0 @@
-getElementById('#valor-total')
