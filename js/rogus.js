@@ -22,33 +22,27 @@ function floatToMoneyText (value) {
 	return text.substr(0, text.length -2) + "," + text.substr(-2);
 }
 
-
 function calculateTotalProducts() {
 
-	//algumas pessoas indicam usar o $ nafrente da variável que for do jQuery
 	var produtos = $(".produto");
 	var total = 0;
 
-	for( pos = 0; pos < produtos.length; pos++) {
-
-		var $produto = $(produtos[pos]);
+	$(produtos).each(function(pos, produto) {
+		var $produto = $(produto);
 		var quantity = moneyTextToFloat($produto.find(".quantity").val());
 		var price = moneyTextToFloat($produto.find(".price").text());
-	  
-	  total += quantity * price;
-	}
-  return total
+
+		total += quantity * price;
+	});
+
+  return total;
 }
 
-function onDocumentLoad(){
-	var textEdits = document.getElementsByClassName('quantity');
-
-	for(var i = 0; i < textEdits.length; i++){
-		textEdits[i].onchange = function() {
-    	writeTotal(calculateTotalProducts());
-		};
-	}
-}
+$(function(){
+	$(".quantity").change(function(){
+		writeTotal(calculateTotalProducts());
+	});
+});
 
 window.onload = onDocumentLoad;
 
