@@ -2,13 +2,13 @@ var total = document.getElementById('total');
 
 
 function readTotal() {
-	var total = document;getElementById("total");
-	return moneyTextToFloat(total.innerHTML);
+	var total = $("#total").text();
+	return moneyTextToFloat(total);
 }
    
 function writeTotal(value) {
-	var total = document.getElementById("total");
-	total.innerHTML = floatToMoneyText(value);
+	var text = floatToMoneyText(value);
+	$("#total").text(text);
 }
 
 function moneyTextToFloat(text) {
@@ -22,38 +22,74 @@ function floatToMoneyText (value) {
 	return text.substr(0, text.length -2) + "," + text.substr(-2);
 }
 
+
 function calculateTotalProducts() {
 
-	var produtos = document.getElementsByClassName("produto");
-	var totalProdutos = 0	;
+	//algumas pessoas indicam usar o $ nafrente da variável que for do jQuery
+	var produtos = $(".produto");
+	var total = 0;
 
-	for(var pos = 0; pos < produtos.length; pos++) {
+	for( pos = 0; pos < produtos.length; pos++) {
 
-		var priceElements = produtos[pos].getElementsByClassName('price');
-		var priceText = priceElements[0].innerHTML;
-		var price = moneyTextToFloat(priceText);
-
-		var qtyElements = produtos[pos].getElementsByClassName("quantity");
-		var qtyText = qtyElements[0].value;
-		var quantity = moneyTextToFloat(qtyText);
-
-		var subtotal = quantity * price;
-
-		totalProdutos += subtotal;
+		var $produto = $(produtos[pos]);
+		var quantity = moneyTextToFloat($produto.find(".quantity").val());
+		var price = moneyTextToFloat($produto.find(".price").text());
+	  
+	  total += quantity * price;
 	}
-	return totalProdutos;
-}
-
-function quantidadeMudou(){
-	writeTotal(calculateTotalProducts());
+  return total
 }
 
 function onDocumentLoad(){
 	var textEdits = document.getElementsByClassName('quantity');
 
 	for(var i = 0; i < textEdits.length; i++){
-		textEdits[i].onchange = quantidadeMudou;
+		textEdits[i].onchange = function() {
+    	writeTotal(calculateTotalProducts());
+		};
 	}
 }
 
 window.onload = onDocumentLoad;
+
+
+if (document.getElementsByClassName == undefined) {
+	alert('getElementbyClassName not found');
+
+	document.getElementsByClassName = function(ClassName) {
+		alert("regozijai-vos, usuários de internt Explore");
+	}
+}
+
+function quantidadeMudou() {
+	writeTotal(calculateTotalProducts());	
+}
+
+function onDocumentLoad() {
+	var textEdits = document.getElementsByClassName("quantity");
+
+	for(var i = 0; i < textEdits.length; i++) {
+		textEdits[i].onchange = quantidadeMudou;
+	}
+}
+
+/*
+
+var todosElementos = document.getElementbyClassName("*");
+var resultados = [];
+
+var elemento;
+
+for (var i = 0; (elemento = todosElementos[i]) != null; i++) {
+	var elementoClass = elemento.className;
+	if (elementoClass && elementoClass.indexOf(className) != -1) {
+		resultados.push(elemento);
+	}
+}
+
+return resultados;
+
+*/
+
+
+//pag = 30
